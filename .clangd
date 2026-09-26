@@ -1,0 +1,57 @@
+CompileFlags:
+  Add:
+    - "-std=c++23"
+    - "-Wall"
+    - "-Wextra"
+    - "-Wpedantic"
+    - "-Wshadow"
+    - "-Wno-unknown-warning-option"
+    - "-Wno-cuda-compat"
+  Remove:
+    - "-fmodules-ts"
+    - "-fmodule-mapper=*"
+    - "-fdeps-format=*"
+    - "-mabi=*" # Remove unknown cross-compile params
+    - "-O*" # Remove optimization params
+    # Ignore CUDA Compile Options
+    - "-forward-unknown-to-host-compiler"
+    - "-arch=*"
+    - "-rdc=*"
+    - "--expt-*"
+    - "-Xcompiler*"
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - "bugprone-*"
+      - "modernize-*"
+      - "performance-*"
+      - "readability-*"
+      - "cppcoreguidelines-*"
+      - "misc-*"
+      - "concurrency-*"
+      - "cert-*"
+      - "portability-*"
+    Remove:
+      - "cppcoreguidelines-avoid-magic-numbers"
+      - "readability-magic-numbers"
+      # - "modernize-use-trailing-return-type"
+      - "cppcoreguidelines-pro-bounds-points-arithmetic"
+      - "cppcoreguidelines-owning-memory"
+      - "misc-non-private-member-variables-in-classes"
+      - "readability-identifier-length"
+  Suppress:
+    - "drv_unknown_argument"
+    - "unused-includes"
+
+Index:
+  Background: Build
+
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+  Designators: Yes
+
+Hover:
+  ShowAKA: Yes
